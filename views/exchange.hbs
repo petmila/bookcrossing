@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <title>Создание обмена</title>
+  <link href="/css/book_page.css" rel="stylesheet">
+  {{> shared_links}}
+  <script src="/js/exchange.js" async></script>
+</head>
+<body>
+<header>
+  <div class="exchange_site_name">
+    Выберите свою книгу из списка, чтобы начать обмен
+  </div>
+</header>
+<main>
+  <section class="search_area">
+    {{#each my_books}}
+      {{> exchange_bookinfo}}
+    {{/each}}
+    <div class="book_information__buttons_line">
+      <form>
+        <input type="hidden" name="exchangeId" value={{ exchangeId }}>
+        <input id="cancel_exchange_button" class="book_information__button" type="button" value="Отмена"
+               onclick="cancelExchange(event)">
+      </form>
+      <form>
+        <input type="hidden" name="exchangeId" value={{ exchangeId }}>
+        <input id="save_exchange_button" class="book_information__button" type="button" value="Сохранить"
+               onclick="saveExchange(event)">
+      </form>
+    </div>
+  </section>
+</main>
+{{> footer}}
+</body>
+</html>

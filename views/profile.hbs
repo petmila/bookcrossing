@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <title>Профиль на сайте буккроссинга</title>
+    <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js" async></script>
+    <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css"/>
+
+    {{> shared_links}}
+    <script src="/js/profile.js" async></script>
+    <link href="/css/profile.css" rel="stylesheet">
+  </head>
+  <body>
+    <header>
+      {{> authorized_menu}}
+    </header>
+    <main>
+      <section>
+        <nav class="profile_horisontal_menu">
+          <ul>
+            <button class="profile_horisontal_menu__button active" onclick="openProfile(event, 'my_books')">мои книги</button>
+            <button class="profile_horisontal_menu__button" onclick="openProfile(event, 'books_in_process')">на рассмотрении</button>
+            <button class="profile_horisontal_menu__button" onclick="openProfile(event, 'suggestions_for_me')">хотите взять?</button>
+            <button class="profile_horisontal_menu__button" onclick="openProfile(event, 'successfull_excanges')">завершенные обмены</button>
+          </ul>
+        </nav>
+        <div class="profile_block" id="my_books">
+          {{#each my_book}}
+            {{> profile_bookinfo}}
+          {{/each}}
+          <form>
+            <input id="book_to_profile_add_button" class="profile_block__button" 
+              onclick="addBookToProfile(event)" type="button" value="+ Добавить книгу">
+          </form>
+        </div>
+        <div class="profile_block" id="books_in_process">
+          <div class="profile_block__books_in_progress_table">
+            <span class="profile_block__table_header">Ваша книга</span>
+            <span class="profile_block__table_header">Хотите получить взамен</span>
+            {{#each exchanges_from}}
+              {{> exchange_offer_from_user}}
+            {{/each}}
+          </div>
+        </div>
+        <div class="profile_block" id="suggestions_for_me">
+          <div class="profile_block__books_in_progress_table">
+            <span class="profile_block__table_header">Предложение для вас</span>
+            <span class="profile_block__table_header">Просят у вас взамен</span>
+            {{#each exchanges_to}}
+              {{> exchange_offer_to_user}}
+            {{/each}}
+          </div>
+        </div>
+        <div class="profile_block" id="successfull_excanges">
+          <div class="profile_block__books_in_progress_table">
+            <span class="profile_block__table_header">Вы получили</span>
+            <span class="profile_block__table_header">Вы отдали</span>
+            <span class="profile_block__table_header">Контакт для связи</span>
+            {{#each complete_exchanges}}
+              {{> completed_exchange}}
+            {{/each}}
+          </div>
+        </div>
+      </section>
+    </main>
+    {{> footer}}
+  </body>
+</html>

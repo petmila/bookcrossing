@@ -1,0 +1,39 @@
+@font-face {
+    font-family: "Bradley";
+    src: url("../fonts/BradleysPen.ttf");
+  }
+
+body {
+    background-image: url("../images/book_page_background_2.jpg");
+    text-align: center;
+}
+
+.login_area {
+    font-size: calc(0.5em + 1vw);
+    font-family: Bradley, cursive;
+  border: 3px;
+  background-color:  #f18053;
+  border: 6px solid #985033;
+  border-radius: 25px;
+  padding: 2% 7%;
+  margin: 5px 13%;
+  display: inline-block;
+}
+
+.login_area__input_line{
+    text-align: left;
+}
+
+.login_area__button{
+  font-size: calc(0.5em + 1vw);
+  font-family: Bradley, cursive;
+  background-color: #FFE9B0;
+  border: 6px solid #f18053;
+  border-radius: 25px;
+  padding: 2px 10px;
+  margin: 10px
+}
+
+.footer__about_author, .footer__load_time {
+    color:rgb(176, 143, 103);
+}

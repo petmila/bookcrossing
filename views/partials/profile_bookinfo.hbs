@@ -1,0 +1,26 @@
+<div class="book_information">
+    <img class="book_information__book_image" src={{ image }}>
+    <div class="book_information__book_info_text">
+        <p class="book_information__book_info_line">
+            <b>Название:</b> {{ title }}</p>
+        <p class="book_information__book_info_line">
+            <b>Автор:</b> {{ author }}</p>
+        <p class="book_information__book_info_line">
+            <b>Год издания:</b> {{ year }}<br></p>
+        <p class="book_information__book_info_line">
+            <b>Состояние:</b> {{ condition }}<br></p>
+        <p class="book_information__book_info_line">
+            <b>Описание:</b> {{ description }}</p>
+        <div class="book_information__buttons_line">
+                  <!-- <form>
+                    <input class="profile_block__button" type="button" value="Изменить">
+                  </form> -->
+            <form>
+                <input type="hidden" name="bookId" value={{ id }}>
+              <input type="hidden" name="userId" value={{ userId }}>
+                <input class="profile_block__button" type="button" value="Удалить"
+                    onclick="deleteBook(event)">
+            </form>
+        </div>
+    </div>
+</div>

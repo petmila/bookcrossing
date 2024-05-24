@@ -1,0 +1,82 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id    Int     @default(autoincrement()) @id
+  email String  @unique
+  nickname  String @unique
+  password  String
+  bookPreference String?
+  books BookCard[]
+  exchangesAsOwner Exchange[] @relation(name: "UserBookOwner")
+  exchangesAsCreator Exchange[] @relation(name: "UserExchangeCreator")
+}
+
+model BookCard {
+  id        Int      @default(autoincrement()) @id
+  title     String
+  author   String
+  description   String
+  updateTime DateTime @updatedAt
+  condition BookCondition @default(GREAT)
+  status BookCardStatus @default(MODERATION)
+  user    User?    @relation(fields: [userId], references: [id])
+  userId Int?
+  category Category? @relation(fields: [categoryName], references: [name])
+  categoryName String?
+  year  Int
+  exchangesAsFirstBook Exchange[] @relation(name: "BookCreatorGets")
+  exchangesAsSecondBook Exchange[] @relation(name: "BookOwnerGets")
+}
+
+model Category {
+    id        Int      @default(autoincrement()) @id
+    name  String @unique
+    description   String?
+    includedGenres String?
+    books BookCard[]
+}
+
+model Moderator {
+    id        Int      @default(autoincrement()) @id
+    password  String
+    login  String @unique
+}
+
+model Exchange {
+    id        Int      @default(autoincrement()) @id
+    owner User? @relation(name: "UserBookOwner", fields: [ownerId], references: [id])
+    ownerId Int?
+    creator User? @relation(name: "UserExchangeCreator", fields: [creatorId], references: [id])
+    creatorId Int?
+    bookForCreator BookCard? @relation(name: "BookCreatorGets", fields: [bookForCreatorId], references: [id])
+    bookForCreatorId Int?
+    bookForOwner BookCard? @relation(name: "BookOwnerGets", fields: [bookForOwnerId], references: [id])
+    bookForOwnerId Int?
+    note String?
+    status ExchangeStatus @default(ACTIVE)
+}
+
+enum BookCondition {
+  NEW
+  GREAT
+  GOOD
+  ACCEPTABLE
+  BAD
+}
+enum BookCardStatus {
+  MODERATION
+  ACTIVE
+  CONCEALED
+}
+enum ExchangeStatus {
+  ACTIVE
+  REJECTED
+  COMPLETED
+}

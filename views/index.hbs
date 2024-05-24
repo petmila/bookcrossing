@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <title>Буккроссинг - основная страница</title>
+    {{> shared_links}}
+    <script src="/js/exchange.js" async></script>
+  </head>
+  <body>
+    <header>
+      <img class="main_icon" src="/images/icon_2.png">
+      <div class="site_name">
+        <h1 class="site_name__site_h1">Буккроссинг</h1>
+        <blockquote class="site_name__jmartin">
+          <p>Читатель проживает <em>тысячу</em> жизней, прежде чем умрет. <br> 
+            Человек, который никогда не читает, проживает только <em>одну</em>.</p>
+          <cite>Джордж Мартин</cite>
+        </blockquote>
+      </div>
+      {{> authorized_menu}}
+    </header>
+    <main>
+      <section class="search_area">
+        <form id="main_page_search_line" class="search_area__search_line" method="GET" action="/books/search">
+          <input class="search_area__search_text" type="text" placeholder="Поиск по названию или автору книги" name="searchString">
+          <input class="search_area__button" type="submit" value="Искать">
+        </form>
+        <div class="search_area__searh_result">
+          {{#each books}}
+            {{> bookcard}}
+          {{/each}}
+        </div> 
+      </section>
+    </main>
+    {{> footer}}
+  </body>
+</html>

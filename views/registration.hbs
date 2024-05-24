@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <title>login - буккроссинг</title>
+    {{> shared_links}}
+    <link href="css/login_page.css" rel="stylesheet">
+  </head>
+  <body>
+    <header>
+      {{> unauthorized_menu}}
+    </header>
+    <main>
+      <form class="login_area" method="post" action="/auth/registration">
+        <div class="login_area__forms">
+        <div class="login_area__input_line">
+            <p>Логин:</p>
+            <input type="text" name="login">
+        </div>
+        <div class="login_area__input_line">
+            <p>Пароль:</p>
+            <input type="text" name="password">
+        </div>
+        <div class="login_area__input_line">
+            <p>Контакт для связи:</p>
+            <input type="text" name="contacts">
+        </div>
+        <div class="login_area__input_line">
+            <p>Предпочтения:</p>
+            <input type="textarea" name="preferences">
+        </div>
+        </div>
+        <div>
+            <input class="login_area__button" type="submit" value="Сохранить">
+        </div>
+      </form>
+    </main>
+    {{> footer}}
+  </body>
+</html>

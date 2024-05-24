@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <title>Книга</title>
+    <link href="css/book_page.css" rel="stylesheet">
+    {{> shared_links}}
+  </head>
+  <body>
+    <header>
+      {{> authorized_menu}}
+    </header>
+    <main>
+     <section class="search_area">
+        {{> bookcard}}
+     </section>
+    </main>
+    {{> footer}}
+  </body>
+</html>

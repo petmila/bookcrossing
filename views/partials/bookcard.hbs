@@ -1,0 +1,14 @@
+<div class="book_information">
+    <img class="book_information__book_image" src={{ image }}>
+    <div class="book_information__book_info_text">
+        <p><b>Название:</b> {{ title }}<br>
+        <b>Автор:</b> {{ author }}<br>
+        <b>Год издания:</b> {{ year }}<br>
+        <b>Состояние:</b> {{ condition }}<br>
+        <b>Описание:</b> {{ description }}</p>
+        <form id={{ id }} method="post" action="/exchanges/">
+            <input type="hidden" name="bookForCreatorId" value={{ id }}>
+            <input class="book_information__button" type="submit" value="Обменяться">
+        </form>
+    </div>
+</div>

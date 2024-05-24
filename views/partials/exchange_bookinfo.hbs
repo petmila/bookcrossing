@@ -1,0 +1,16 @@
+<div class="book_information">
+  <img class="book_information__book_image" src={{ image }}>
+  <div class="book_information__book_info_text">
+    <p class="book_information__book_info_line"><b>Название:</b> {{ title }}</p>
+    <p class="book_information__book_info_line"><b>Автор:</b> {{ author }}</p>
+    <p class="book_information__book_info_line"><b>Год издания:</b> {{ year }}</p>
+    <p class="book_information__book_info_line"><b>Состояние:</b> {{ condition }}</p>
+    <p class="book_information__book_info_line"><b>Описание:</b> {{ description }}</p>
+    <form>
+      <input type="hidden" name="userId" value={{ userId }}>
+      <input type="hidden" name="bookId" value={{ id }}>
+      <input id="choose_my_book_button" class="book_information__button" type="button" value="Выбрать"
+             onclick="chooseBook(event)">
+    </form>
+  </div>
+</div>
